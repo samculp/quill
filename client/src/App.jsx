@@ -17,6 +17,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("")
   const [showModal, setShowModal] = useState(false)
 
+  // primary function to fetch the user's data and display the dashboard
   async function showDashboard() {
     try {
       const result = await fetch(apiBase + 'user-full-info', {
@@ -37,6 +38,7 @@ function App() {
     }
   }
 
+  // register/login a user
   async function authenticate(extension) {
     localStorage.removeItem('token')
     try {
@@ -62,6 +64,7 @@ function App() {
     }
   }
 
+  // logout a user, reset the states
   function logout() {
     localStorage.removeItem('token')
     setShowModal(false)
@@ -115,6 +118,7 @@ function App() {
     }
   }
 
+  // runs upon refresh
   useEffect(() => {
     async function checkRebootandRun() {
       try {
@@ -138,12 +142,14 @@ function App() {
     checkRebootandRun()
   }, [])
 
+  // showDashboard() gets executed when token changes
   useEffect(() => {
     if (token) {
       showDashboard()
     }
   }, [token])
 
+  // set user's notes when user changes
   useEffect(() => {
     setNotes(user?.notes)
   }, [user])

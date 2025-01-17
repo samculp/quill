@@ -2,8 +2,8 @@ const users = [
   {
     _id: '11111',
     username: 'samculp',
-    nickname: 'sam',
     password: 'password',
+    nickname: 'sam',
     notes: [
       {
         id: 0,
