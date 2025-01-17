@@ -25,7 +25,7 @@ app.get('/reboot-id', (req, res) => {
 // returns the entire user objects
 app.get('/user-full-info', authMiddleware, async (req, res) => {
   const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
-  if (!user) return res.status(400).send({message: 'No user with this username found'})
+  if (!user) return res.status(400).send({error: 'No user with this username found'})
   res.status(200).send(user)
 })
 
