@@ -67,6 +67,8 @@ function App() {
     setShowModal(false)
     setIsShowingDashboard(false)
     setUser({})
+    setUsername("")
+    setPassword("")
   }
 
   // CRUD OPERATIONS
