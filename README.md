@@ -58,7 +58,7 @@ npm install
 - At the top of the file, you should see a variable called `apiBase`. This variable sepcifies the URL that your client will use to send network requests (i.e., the server you just configured).
   - The default value is:
     ```javascript
-    const apiBase = 'http://localhost:5000/;
+    const apiBase = 'http://localhost:5000/';
     ```
   - Update the port number (`5000`) to match the `PORT` value in your server's `.env` file. If you did not change `PORT`, you can leave this line as is.
 
