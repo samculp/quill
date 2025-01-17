@@ -1,0 +1,108 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal-underlay {
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0.8;
+  z-index: 99;
+  border: none;
+  width: 100%;
+  box-shadow: unset;
+  cursor: pointer;
+}
+
+.modal-underlay:hover {
+  transform: translate(0);
+  box-shadow: unset;
+}
+
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  text-align: center;
+  z-index: 100;
+  height: 350px;
+  width: 500px;
+}
+
+.modal-card hr {
+  margin-top: 0;
+  background-color: black;
+  color: black;
+  height: 1px;
+  width: 100%;
+}
+
+.account-information {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.account-information p {
+  margin-top: 0.25rem;
+}
+
+.user-attribute {
+  font-weight: 700;
+}
+
+.account-information input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.account-information input:focus {
+  border-color: #6e8efb;
+  box-shadow: 0 0 5px rgba(110, 142, 251, 0.3);
+  outline: none;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.modal-buttons button {
+  padding: 0.8rem;
+  background: #6e8efb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background: #5a77e0;
+}
