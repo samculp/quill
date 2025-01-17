@@ -5,6 +5,9 @@ import authMiddleware from './middleware/authMiddleware.js'
 import noteRoutes from './routes/noteRoutes.js'
 import { ObjectId } from 'mongodb'
 import db from './db/connection.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const PORT = process.env.PORT || 5000
 const app = express()
