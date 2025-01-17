@@ -65,7 +65,7 @@ npm install
     ```
   - Yours should look something like:
     ```javascript
-    const apiBase = 'https://localhost:5000/';
+    const apiBase = 'https://localhost:5000/'
   - Update the port number (`5000`) to match the `PORT` value in your server's `.env` file. If you did not change `PORT`, you can leave this line as is.
 
  ### 3. Starting the client
