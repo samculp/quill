@@ -1,5 +1,8 @@
 # README
 
+## NOTE
+The project is currently set up for deployment via Render, and the live link for the website is [here](https://quill-hn0c.onrender.com/). The following steps will help you set up the project for **development**.
+
 ## SETTING UP THE SERVER
 
 ### 1. Setting up your MongoDB database
@@ -58,8 +61,11 @@ npm install
 - At the top of the file, you should see a variable called `apiBase`. This variable sepcifies the URL that your client will use to send network requests (i.e., the server you just configured).
   - The default value is:
     ```javascript
-    const apiBase = 'http://localhost:5000/';
+    const apiBase = 'https://quill-api-vvzr.onrender.com/'
     ```
+  - Yours should look something like:
+    ```javascript
+    const apiBase = 'https://localhost:5000/';
   - Update the port number (`5000`) to match the `PORT` value in your server's `.env` file. If you did not change `PORT`, you can leave this line as is.
 
  ### 3. Starting the client
