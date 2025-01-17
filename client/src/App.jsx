@@ -4,7 +4,7 @@ import Header from './components/Header.jsx'
 import NotesList from './components/NotesList.jsx'
 import Modal from './components/Modal.jsx'
 
-const apiBase = 'http://localhost:5000/'
+const apiBase = 'https://quill-api-vvzr.onrender.com/'
 
 function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(false)
