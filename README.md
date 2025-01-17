@@ -40,7 +40,7 @@ Server is listening on port PORT...
 ## SETTING UP THE CLIENT
 
 ### 1. Installing the necessary packages
-- If you are still in the `server` directory, navigate back to the parent directory:
+- Open up a new terminal window. DO NOT CLOSE THE TERMINAL that is running your server, as this will shut down your server and you will have to restart it. If you are still in the `server` directory, navigate back to the parent directory:
 ```bash
 cd ..
 ```
@@ -54,7 +54,7 @@ npm install
 ```
 
 ### 2. Configuring the port number
-- Open the `App.jsx` file inside of the `components` folder.
+- Open the `App.jsx` file inside of the `src` folder.
 - At the top of the file, you should see a variable called `apiBase`. This variable sepcifies the URL that your client will use to send network requests (i.e., the server you just configured).
   - The default value is:
     ```javascript
