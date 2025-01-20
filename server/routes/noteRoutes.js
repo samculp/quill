@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     // find the appropriate user
-    const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+    const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
     if (!user) { return res.status(404).send({error: 'User not found'}) }
     res.status(200).send(user.notes)
   } catch (error) {
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
   try {
     // find the appropriate user
-    const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+    const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
     if (!user) { return res.status(404).send({error: 'User not found'}) }
 
     // create the new note
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     }
 
     // add the new note to the user's notes array
-    await db.collection('users').updateOne(
+    await db.collection('records').updateOne(
       { _id: new ObjectId(req.userId) },
       { $push: { notes: newNote } }
     )
@@ -53,11 +53,11 @@ router.delete('/:noteId', async (req, res) => {
 
   try {
     // find the appropriate user
-    const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+    const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
     if (!user) { return res.status(404).send({error: 'User not found'}) }
 
     // remove the note from the user's notes array
-    const result = await db.collection('users').updateOne(
+    const result = await db.collection('records').updateOne(
       { _id: new ObjectId(req.userId) },
       { $pull: { notes: {id: new ObjectId(noteId)} } }
     )
@@ -75,11 +75,11 @@ router.put('/:noteId', async (req, res) => {
 
   try {
     // find the appropriate user
-    const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+    const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
     if (!user) { return res.status(404).send({error: 'User not found'}) }
 
     // update the note's "completed" status
-    const result = await db.collection('users').updateOne(
+    const result = await db.collection('records').updateOne(
       { _id: new ObjectId(req.userId), 'notes.id': new ObjectId(noteId) },
       { $set: { 'notes.$.completed': true } }
     )

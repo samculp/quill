@@ -24,7 +24,7 @@ app.get('/reboot-id', (req, res) => {
 
 // returns the entire user objects
 app.get('/user-full-info', authMiddleware, async (req, res) => {
-  const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+  const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
   if (!user) return res.status(400).send({error: 'No user with this username found'})
   res.status(200).send(user)
 })
@@ -34,9 +34,9 @@ app.post('/nickname', authMiddleware, async (req, res) => {
   const { newNickname } = req.body
   if (!newNickname) req.status(404).send({error: "Nickname content required"})
   try {
-    const user = await db.collection('users').findOne({_id: new ObjectId(req.userId)})
+    const user = await db.collection('records').findOne({_id: new ObjectId(req.userId)})
     if (!user) res.status(404).send({error: "User not found"})
-    await db.collection('users').updateOne(
+    await db.collection('records').updateOne(
       {_id: new ObjectId(req.userId)},
       {$set: {nickname: newNickname}}
     )

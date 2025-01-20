@@ -12,14 +12,14 @@ router.post('/register', async (req, res) => {
 
   try {
     // check if the user exists
-    const existingUser = await db.collection('users').findOne({username: username})
+    const existingUser = await db.collection('records').findOne({username: username})
     if (existingUser) return res.status(400).send({error: 'Username already exists'})
 
     // hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
 
     // create the user
-    const result = await db.collection('users').insertOne({
+    const result = await db.collection('records').insertOne({
       username: username,
       password: hashedPassword,
       nickname: username,
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
 
   try {
     // find the user
-    const user = await db.collection('users').findOne({username: username})
+    const user = await db.collection('records').findOne({username: username})
     if (!user) return res.status(400).send({error: 'No user with this username found'})
 
     // check the password
