@@ -2,16 +2,18 @@ import { useEffect, useState } from 'react'
 import AuthScreen from './components/AuthScreen.jsx'
 import Header from './components/Header.jsx'
 import NotesList from './components/NotesList.jsx'
-import Modal from './components/Modal.jsx'
+import AccountModal from './components/AccountModal.jsx'
+import LoadingModal from './components/LoginModal.jsx'
 
 const apiBase = 'https://quill-api-vvzr.onrender.com/'
 
 function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [token, setToken] = useState("")
   const [notes, setNotes] = useState([])
   const [user, setUser] = useState({})
-  const [isShowingDashboard, setIsShowingDashboard] = useState(true)
+  const [isShowingDashboard, setIsShowingDashboard] = useState(false)
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
@@ -35,6 +37,8 @@ function App() {
     } catch (error) {
       console.error(error.message)
       logout()
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -72,6 +76,7 @@ function App() {
     setUser({})
     setUsername("")
     setPassword("")
+    setIsLoading(false)
   }
 
   // CRUD OPERATIONS
@@ -122,6 +127,7 @@ function App() {
   useEffect(() => {
     async function checkRebootandRun() {
       try {
+        setIsLoading(true)
         const response = await fetch(apiBase + 'reboot-id')
         const data = await response.json()
         const serverRebootId = data.rebootId
@@ -157,7 +163,8 @@ function App() {
   
   return (
     <div>
-      {showModal && <Modal {...{showModal, setShowModal, user, changeNickname, logout}} />}
+      {isLoading && <LoadingModal />}
+      {showModal && <AccountModal {...{showModal, setShowModal, user, changeNickname, logout}} />}
       <Header {...{isShowingDashboard, user, logout, showModal, setShowModal} }/>
       <div className="content">
         {!isShowingDashboard && <AuthScreen {...{username, setUsername, password, setPassword, authenticate, isAuthenticating, errorMessage, setErrorMessage}} />}
