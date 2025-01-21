@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom'
 import './styles/AuthScreen.css'
 
 export default function AuthScreen(props) {
-  const { username, setUsername, password, setPassword, authenticate, isAuthenticating, errorMessage, setErrorMessage } = props
+  const { username, setUsername, password, setPassword, authenticate, isAuthenticating, errorMessage, setErrorMessage } = useContext(AuthContext)
 
   const [isLogin, setIsLogin] = useState(true);
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const navigate = useNavigate()
 
   const toggleAuthMode = () => {
     setIsLogin((prevMode) => !prevMode);
@@ -24,6 +27,7 @@ export default function AuthScreen(props) {
       return
     } else {
       await authenticate(extension)
+      navigate('/dashboard')
     }
   }
 

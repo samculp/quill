@@ -1,28 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './styles/Modal.css'
+import { AuthContext } from '../context/AuthContext'
 
 export default function Modal(props) {
-  const { showModal, setShowModal, user, changeNickname, logout } = props
+  const { isShowingModal, setIsShowingModal } = props
+  const { globalUser, logout, changeNickname } = useContext(AuthContext)
 
   const [newNickname, setNewNickname] = useState("")
 
   function handleChangeNickname() {
     if (newNickname.trim()) {
       changeNickname(newNickname.trim())
-      setShowModal(false)
+      setIsShowingModal(false)
     } 
   }
 
   return (
     <div className="modal-container">
-      <button className="modal-underlay" onClick={() => setShowModal(!showModal)} />
+      <button className="modal-underlay" onClick={() => setIsShowingModal(!isShowingModal)} />
       <div className="modal-card">
         <h2>Account Information</h2>
         <hr />
         <div className="account-information">
-          <p><span className="user-attribute">Username/Email:</span> {user.username}</p>
-          <p><span className="user-attribute">Nickname:</span> {user.nickname}</p>
-          <p><span className="user-attribute"># of Notes:</span> {user.notes.length}</p>
+          <p><span className="user-attribute">Username/Email:</span> {globalUser?.username}</p>
+          <p><span className="user-attribute">Nickname:</span> {globalUser?.nickname}</p>
+          <p><span className="user-attribute"># of Notes:</span> {globalUser?.notes.length}</p>
           <input type="text" placeholder="New nickname" 
             value={newNickname} onChange={(e) => setNewNickname(e.target.value)}/>
         </div>
