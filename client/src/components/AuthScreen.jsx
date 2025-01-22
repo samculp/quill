@@ -31,9 +31,7 @@ export default function AuthScreen(props) {
     }
   }
 
-  useEffect(() => {
-    setErrorMessage("")
-  }, [isLogin])
+  
 
   return (
     <div className="auth-container">

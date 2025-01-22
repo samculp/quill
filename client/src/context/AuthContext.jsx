@@ -30,11 +30,11 @@ export function AuthProvider(props) {
         setAuthToken(data.token)
         localStorage.setItem('token', data.token)
       } else {
+        setErrorMessage(data.error)
         throw Error(data.error || 'Failed to authenticate')
       }
     } catch (error) {
       console.error(error.message)
-      setErrorMessage(error.message)
     } finally {
       setIsAuthenticating(false)
     }
