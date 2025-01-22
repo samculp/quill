@@ -15,6 +15,11 @@ export default function Modal(props) {
     } 
   }
 
+  function handleLogout() {
+    setIsShowingModal(false)
+    logout()
+  }
+
   return (
     <div className="modal-container">
       <button className="modal-underlay" onClick={() => setIsShowingModal(!isShowingModal)} />
@@ -30,7 +35,7 @@ export default function Modal(props) {
         </div>
         <div className="modal-buttons">
           <button onClick={handleChangeNickname}>Change Nickname</button>
-          <button onClick={logout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </div>

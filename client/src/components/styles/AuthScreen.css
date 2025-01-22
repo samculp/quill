@@ -96,3 +96,10 @@
 .auth-toggle span:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .auth-card {
+    width: 70%;
+    padding: 1.5rem;
+  }
+}

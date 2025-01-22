@@ -1,0 +1,17 @@
+footer {
+  bottom: 0;
+  height: auto;
+  padding: 1rem;
+  position: fixed;
+  background-color: white;
+  opacity: 0.8;
+  width: 100%;
+}
+
+footer a {
+  all: unset;
+  display: inline-block;
+  color: #5b80fd;
+  font-weight: 700;
+  cursor: pointer;
+}
