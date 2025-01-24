@@ -9,7 +9,7 @@ import Footer from './components/Footer.jsx'
 
 function App() {
   const apiBase = 'https://quill-api-vvzr.onrender.com/'
-
+  
   return (
     <AuthProvider {...{ apiBase }}>
       <Router>

@@ -5,8 +5,8 @@ export const AuthContext = createContext()
 export function AuthProvider(props) {
   const { children, apiBase } = props
 
-  const [globalUser, setGlobalUser] = useState(null)
-  const [globalNotes, setGlobalNotes] = useState(null)
+  const [globalUser, setGlobalUser] = useState({})
+  const [globalNotes, setGlobalNotes] = useState([])
   const [authToken, setAuthToken] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthenticating, setIsAuthenticating] = useState(false)
@@ -145,7 +145,7 @@ export function AuthProvider(props) {
   const isAuthenticated = !!authToken
 
   return (
-    <AuthContext.Provider value={{ apiBase, globalUser, globalNotes, isLoading, isAuthenticated, isAuthenticating,
+    <AuthContext.Provider value={{ apiBase, globalUser, globalNotes, setGlobalNotes, isLoading, isAuthenticated, isAuthenticating,
     errorMessage, setErrorMessage, username, setUsername, password, setPassword, authenticate, logout,
     createNote, deleteNote, changeNickname, getUserData }}>
       {children}
