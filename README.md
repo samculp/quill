@@ -1,7 +1,7 @@
 # README
 
 ## NOTE
-The project is currently set up for deployment via Render, and the live link for the website is [here](https://quill-hn0c.onrender.com/). The following steps will help you set up the project for **development**.
+The project is currently set up for deployment via Render, and the live link for the website is [here](https://notes-quill.netlify.app/dashboard). The following steps will help you set up the project for **development**.
 
 ## SETTING UP THE SERVER
 
