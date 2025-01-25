@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Footer from './components/Footer.jsx'
 
 function App() {
-  const apiBase = 'https://quill-api-vvzr.onrender.com/'
+  const apiBase = import.meta.env.VITE_API_BASE
   
   return (
     <AuthProvider {...{ apiBase }}>
