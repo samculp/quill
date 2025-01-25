@@ -57,16 +57,9 @@ npm install
 ```
 
 ### 2. Configuring the port number
-- Open the `App.jsx` file inside of the `src` folder.
-- At the top of the file, you should see a variable called `apiBase`. This variable sepcifies the URL that your client will use to send network requests (i.e., the server you just configured).
-  - The default value is:
-    ```javascript
-    const apiBase = 'https://quill-api-vvzr.onrender.com/'
-    ```
-  - Yours should look something like:
-    ```javascript
-    const apiBase = 'https://localhost:5000/'
-  - Update the port number (`5000`) to match the `PORT` value in your server's `.env` file. If you did not change `PORT`, you can leave this line as is.
+- Open the `.env_demo` file in the `client` folder.
+- Change the value of `VITE_API_BASE` to match the URL of the server that you configured. If you did not change anything in the `server` directory's `.env` file, then you should be fine to leave it at `http://localhost:5000/`.
+- Update the name of `.env_demo` to `.env`.
 
  ### 3. Starting the client
  - Ensure that you are in the `client` directory and start the development script:
