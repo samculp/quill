@@ -84,13 +84,16 @@ export function AuthProvider(props) {
   }
 
   async function deleteNote(index) {
+    const tempNotes = globalNotes.filter(note => {
+      return note.id != index
+    })
+    setGlobalNotes(tempNotes)
     await fetch(apiBase + 'notes/' + index, {
       method: 'DELETE',
       headers: {
         'Authorization': authToken
       }
     })
-    getUserData()
   }
 
   async function changeNickname(newNickname) {
