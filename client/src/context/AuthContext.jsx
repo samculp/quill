@@ -144,10 +144,12 @@ export function AuthProvider(props) {
 
   const isAuthenticated = !!authToken
 
-  return (
-    <AuthContext.Provider value={{ apiBase, globalUser, globalNotes, setGlobalNotes, isLoading, isAuthenticated, isAuthenticating,
+  const value = { apiBase, globalUser, globalNotes, setGlobalNotes, isLoading, isAuthenticated, isAuthenticating,
     errorMessage, setErrorMessage, username, setUsername, password, setPassword, authenticate, logout,
-    createNote, deleteNote, changeNickname, getUserData }}>
+    createNote, deleteNote, changeNickname, getUserData }
+
+  return (
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   )

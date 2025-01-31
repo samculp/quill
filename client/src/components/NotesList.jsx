@@ -11,8 +11,6 @@ export default function NotesList(props) {
 
   function handleDragEnd(event) {
     const { active, over } = event
-    console.log('Active:', active)
-    console.log('Over:', over)
     if (over && active.id !== over.id) {
       setGlobalNotes((items) => {
         const oldIndex = items.findIndex(item => item.id === active.id);

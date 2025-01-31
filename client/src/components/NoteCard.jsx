@@ -24,8 +24,9 @@ export default function NoteCard(props) {
   };
 
   return (
-    <div ref={setNodeRef} style={noteStyle} {...attributes} {...listeners} className='note-card'>
+    <div ref={setNodeRef} style={noteStyle} {...attributes} className='note-card'>
       <p className="note-text">{note.note}</p>
+      <div  {...listeners} className="drag-handle">⠿</div>
       <button className="delete-button" onClick={() => deleteNote(note.id)}>
         Delete
       </button>
