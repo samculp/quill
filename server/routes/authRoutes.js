@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
     })
 
     // create a token specific to this user's login session
-    const token = jwt.sign({id: result.insertedId}, process.env.JWT_SECRET, {expiresIn: '1h'})
+    const token = jwt.sign({id: result.insertedId}, process.env.JWT_SECRET, {expiresIn: '24h'})
 
     res.status(201).send({message: 'User registered successfully', token: token})
   } catch (error) {
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
     if (!isPasswordValid) return res.status(400).send({error: 'Invalid password'})
 
     // create a token specific to this user's login session
-    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '1hr'})
+    const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '24hr'})
 
     res.status(200).send({message: 'Login successful', token: token})
   } catch (error) {
